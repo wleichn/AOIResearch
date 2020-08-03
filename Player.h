@@ -1,6 +1,8 @@
 #pragma once
 #include <list>
+#include <set>
 using std::list;
+using std::set;
 
 class Map;
 // 玩家类
@@ -61,5 +63,8 @@ private:
 	list<int> m_NewViewList;		// 本帧视野中新增对象的列表
 	list<int> m_LostViewList;		// 本帧视野中消失对象的列表
 	int	  m_MapID = 0;				// 玩家所在地图ID
+	list<Player* >::iterator x_ListIte;		// 玩家按照X轴排列时的位置
+	list<Player* >::iterator y_ListIte;		// 玩家按照Y轴排列时的位置
+	set<int> m_ViewSet;				// 视野集合（与m_ViewList一同维护，用于提升判断对象是否在当前玩家视野内的效率）
 };
 

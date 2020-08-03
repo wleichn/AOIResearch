@@ -6,6 +6,7 @@
 Player::Player()
 {
 	m_ViewList.clear();
+	m_ViewSet.clear();
 }
 
 Player::Player(int id)
@@ -19,6 +20,7 @@ Player::~Player()
 	m_ViewList.clear();
 	m_NewViewList.clear();
 	m_LostViewList.clear();
+	m_ViewSet.clear();
 }
 
 void Player::Init()
@@ -72,13 +74,7 @@ list<int>& Player::GetLostViewPlayers()
 //这个函数的效率很低 需要修改
 bool Player::IsInView(int otherPlayerID)
 {
-	for (int playerID : m_ViewList)
-	{
-		if (playerID == otherPlayerID) {
-			return true;
-		}
-	}
-	return false;
+	return m_ViewSet.find(otherPlayerID) != m_ViewSet.end();
 }
 
 bool Player::operator ==(Player* other)
