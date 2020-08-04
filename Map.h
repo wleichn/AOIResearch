@@ -1,8 +1,8 @@
 #pragma once
-// åœ°å›¾ç®¡ç†å™¨
+// µØÍ¼¹ÜÀíÆ÷
 
-// åæ ‡ç³»ï¼š
-//           âˆ§ y
+// ×ø±êÏµ£º
+//           ¡Ä y
 //            |
 //            |
 //            |
@@ -26,7 +26,7 @@ public:
 	~Map();
 	void Init();
 	void Logic();
-	// æ·»åŠ ç©å®¶å¯¹è±¡
+	// Ìí¼ÓÍæ¼Ò¶ÔÏó
 	void AddPlayer(int id, Player* player);	
 	float GetWidth() const
 	{
@@ -38,31 +38,31 @@ public:
 	}
 	void Release();
 private:
-	//åˆå§‹åŒ–ç©å®¶åæ ‡
-	//ä¸å¯ä»¥ä¿®æ”¹
+	//³õÊ¼»¯Íæ¼Ò×ø±ê
+	//²»¿ÉÒÔĞŞ¸Ä
 	void InitPosition(float& x, float& y);
-	//ä¸å¯ä»¥ä¿®æ”¹ éœ€è¦æŒ‰é¡ºåºæ›´æ–°ç©å®¶çš„åæ ‡
+	//²»¿ÉÒÔĞŞ¸Ä ĞèÒª°´Ë³Ğò¸üĞÂÍæ¼ÒµÄ×ø±ê
 	void OnAddPlayer(Player* player);
 private:
-	// è§†é‡åŒæ­¥ç®—æ³•ï¼ˆç¤ºä¾‹ï¼‰
+	// ÊÓÒ°Í¬²½Ëã·¨£¨Ê¾Àı£©
 	void PlayerViewLogic();
-	// æ›´æ–°Xã€Yè½´é¡ºåºåˆ—è¡¨
+	// ¸üĞÂX¡¢YÖáË³ĞòÁĞ±í
 	list<Player* >::iterator AddToXList(Player* player);
 	list<Player* >::iterator AddToYList(Player* player);
 	list<Player* >::iterator UpdateToXList(Player* player);
 	list<Player* >::iterator UpdateToYList(Player* player);
-	// åˆ¤æ–­ä¸¤ä¸ªç‚¹çš„è·ç¦»æ˜¯å¦åœ¨å¯è§†èŒƒå›´å†…
+	// ÅĞ¶ÏÁ½¸öµãµÄ¾àÀëÊÇ·ñÔÚ¿ÉÊÓ·¶Î§ÄÚ
 	bool JudgeDistanceInView(Player *onePlayer, Player *otherPlayer);
-	// æ ¹æ®Xã€Yé“¾è¡¨è·å–æŸä¸ªç©å®¶çš„è§†é‡
+	// ¸ù¾İX¡¢YÁ´±í»ñÈ¡Ä³¸öÍæ¼ÒµÄÊÓÒ°
 	list<int> GetViewListByXYList(Player* player);
 private:
-	int m_Width = 0;			// åœ°å›¾å®½
-	int m_Height = 0;			// åœ°å›¾é«˜
-	list<Player* > m_Players;//ç®¡ç†å½“å‰åœ°å›¾ä¸­çš„ç©å®¶ï¼Œå¹¶ç¡®å®šTICKé¡ºåºï¼Œä¸å¯ä»¥ä¿®æ”¹
-	//å…¶ä½™ç®¡ç†ç»“æ„
+	int m_Width = 0;			// µØÍ¼¿í
+	int m_Height = 0;			// µØÍ¼¸ß
+	list<Player* > m_Players;//¹ÜÀíµ±Ç°µØÍ¼ÖĞµÄÍæ¼Ò£¬²¢È·¶¨TICKË³Ğò£¬²»¿ÉÒÔĞŞ¸Ä
+	//ÆäÓà¹ÜÀí½á¹¹
 	//.......
-	list<Player* > x_Players;   // æŒ‰ç…§xè½´é¡ºåºä¿å­˜ç©å®¶
-	list<Player* > y_Players;   // æŒ‰ç…§yè½´é¡ºåºä¿å­˜ç©å®¶
-	int m_MapID = 0;			// åœ°å›¾ID
+	list<Player* > x_Players;   // °´ÕÕxÖáË³Ğò±£´æÍæ¼Ò
+	list<Player* > y_Players;   // °´ÕÕyÖáË³Ğò±£´æÍæ¼Ò
+	int m_MapID = 0;			// µØÍ¼ID
 };
 

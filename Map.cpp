@@ -16,7 +16,7 @@ void Map::Init()
 {
 	m_Width = G_MAPWIDTH;
 	m_Height = G_MAPHEIGHT;
-	m_MapID = 1;		// demoç”¨ä¸€ä¸ªé»˜è®¤IDå³å¯
+	m_MapID = 1;		// demoÓÃÒ»¸öÄ¬ÈÏID¼´¿É
 	return;
 }
 
@@ -27,7 +27,7 @@ void Map::Release()
 
 void Map::InitPosition(float& x, float& y)
 {
-	// åˆå§‹åŒ–ä¸ºå›ºå®šç§å­çš„éšæœºåæ ‡
+	// ³õÊ¼»¯Îª¹Ì¶¨ÖÖ×ÓµÄËæ»ú×ø±ê
 	int posX = rand() % (m_Width + 1);
 	if (posX == 0)
 		posX = 1;
@@ -49,7 +49,7 @@ void Map::AddPlayer(int id, Player* player)
 		return;
 	InitPosition(player->m_X, player->m_Y);		
 	OnAddPlayer(player);
-	//å…¶ä½™ç®¡ç†å™¨çš„æ•°æ®æ’å…¥ã€‚ã€‚ã€‚
+	//ÆäÓà¹ÜÀíÆ÷µÄÊı¾İ²åÈë¡£¡£¡£
 	player->x_ListIte = AddToXList(player);
 	player->y_ListIte = AddToYList(player);
 
@@ -59,21 +59,21 @@ void Map::AddPlayer(int id, Player* player)
 
 void Map::Logic()
 {
-	// æ‰€æœ‰ç©å®¶éšæœºç§»åŠ¨
+	// ËùÓĞÍæ¼ÒËæ»úÒÆ¶¯
 	for (auto onePlayer : m_Players)
 	{
-		// ç©å®¶åœ¨åœ°å›¾è¾¹ç•Œå†…éšæœºç§»åŠ¨
+		// Íæ¼ÒÔÚµØÍ¼±ß½çÄÚËæ»úÒÆ¶¯
 		onePlayer->RandMove(G_MOVESTEP, 1.0f, GetWidth(), 1.0f, GetHeight());
 		onePlayer->x_ListIte = UpdateToXList(onePlayer);
 		onePlayer->y_ListIte = UpdateToYList(onePlayer);
 	}
-	// è§†é‡åŒæ­¥
+	// ÊÓÒ°Í¬²½
 	PlayerViewLogic();
 	// ...
 	return;
 }
 
-// è¿™é‡Œæä¾›äº†æœ€ç®€å•çš„è§†é‡åŒæ­¥ç®—æ³•ï¼Œä½†æ˜¯æ•ˆç‡å¾ˆå·®
+// ÕâÀïÌá¹©ÁË×î¼òµ¥µÄÊÓÒ°Í¬²½Ëã·¨£¬µ«ÊÇĞ§ÂÊºÜ²î
 void Map::PlayerViewLogic()
 {
 	for (Player* onePlayer : m_Players)
@@ -110,6 +110,7 @@ list<Player* >::iterator Map:: AddToXList(Player* player){
 			return x_Players.insert(ite, player);
 		}
 	}
+	return x_Players.insert(x_Players.end(), player);
 }
 
 list<Player* >::iterator Map:: AddToYList(Player* player){
@@ -118,15 +119,16 @@ list<Player* >::iterator Map:: AddToYList(Player* player){
 			return y_Players.insert(ite, player);
 		}
 	}
+	return y_Players.insert(y_Players.end(), player);
 }
 
 list<Player* >::iterator Map:: UpdateToXList(Player* player){
 	/**
 	auto ite = player->x_ListIte;
 
-	if(player->m_X == (*(player->x_ListIte))->m_X){ 		// xåæ ‡æœªå˜åŒ–
+	if(player->m_X == (*(player->x_ListIte))->m_X){ 		// x×ø±êÎ´±ä»¯
 		return ite;
-	}else if(player->m_X > (*(player->x_ListIte))->m_X ){  // xåæ ‡å˜å¤§ï¼Œ
+	}else if(player->m_X > (*(player->x_ListIte))->m_X ){  // x×ø±ê±ä´ó£¬
 		++ite;
 		x_Players.erase(player->x_ListIte);
 		while(ite != x_Players.end()){
@@ -153,6 +155,7 @@ list<Player* >::iterator Map:: UpdateToXList(Player* player){
 			return x_Players.insert(ite, player);
 		}
 	}
+	return x_Players.insert(x_Players.end(), player);
 }
 
 list<Player* >::iterator Map:: UpdateToYList(Player* player){
@@ -162,6 +165,7 @@ list<Player* >::iterator Map:: UpdateToYList(Player* player){
 			return y_Players.insert(ite, player);
 		}
 	}
+	return y_Players.insert(y_Players.end(), player);
 }
 
 bool Map:: JudgeDistanceInView(Player *onePlayer, Player *otherPlayer){
@@ -174,11 +178,11 @@ list<int> Map:: GetViewListByXYList(Player* player){
 	auto ite_X = player->x_ListIte;
 	auto ite_Y = player->y_ListIte;
 	list<int> viewList;
-	set<int> x_ViewSet;		// ä¿å­˜xè½´ä¸Šåœ¨å¯è§†èŒƒå›´å†…çš„å¯¹è±¡id
+	set<int> x_ViewSet;		// ±£´æxÖáÉÏÔÚ¿ÉÊÓ·¶Î§ÄÚµÄ¶ÔÏóid
 
-	// çœ‹Xåæ ‡ï¼Œè·å–è·ç¦»å½“å‰ç©å®¶xåæ ‡ä¸ºè§†é‡åŠå¾„ä»¥å†…çš„æ‰€æœ‰ç©å®¶
+	// ¿´X×ø±ê£¬»ñÈ¡¾àÀëµ±Ç°Íæ¼Òx×ø±êÎªÊÓÒ°°ë¾¶ÒÔÄÚµÄËùÓĞÍæ¼Ò
 	++ite_X;
-	// å½“å‰ç©å®¶å¾€å³çœ‹
+	// µ±Ç°Íæ¼ÒÍùÓÒ¿´
 	while(ite_X != x_Players.end()){
 		if((*ite_X)->m_X - player->m_X <= G_PLAYERFOV){
 			x_ViewSet.insert((*ite_X)->GetID());
@@ -187,27 +191,26 @@ list<int> Map:: GetViewListByXYList(Player* player){
 		}
 		++ite_X;
 	}
-	// å½“å‰ç©å®¶å¾€å·¦çœ‹
+	// µ±Ç°Íæ¼ÒÍù×ó¿´
 	ite_X =  player->x_ListIte;
-	--ite_X;
 	while(ite_X != x_Players.begin()){
+		--ite_X;
 		if(player->m_X -(*ite_X)->m_X <= G_PLAYERFOV){
 			x_ViewSet.insert((*ite_X)->GetID());
 		}else{
 			break;
 		}
-		--ite_X;
 	}
 	if(ite_X == x_Players.begin() && player->m_X -(*ite_X)->m_X <= G_PLAYERFOV){
 		x_ViewSet.insert((*ite_X)->GetID());
 	}
 
-	// çœ‹yåæ ‡ï¼Œè·å–æ‰€æœ‰yåæ ‡è·ç¦»å½“å‰ç©å®¶yåæ ‡åœ¨è§†é‡å†…çš„ç©å®¶
+	// ¿´y×ø±ê£¬»ñÈ¡ËùÓĞy×ø±ê¾àÀëµ±Ç°Íæ¼Òy×ø±êÔÚÊÓÒ°ÄÚµÄÍæ¼Ò
 	++ite_Y;
-	// å½“å‰ç©å®¶å¾€ä¸Šçœ‹
+	// µ±Ç°Íæ¼ÒÍùÉÏ¿´
 	while(ite_Y != y_Players.end()){
 		if((*ite_Y)->m_Y - player->m_Y <= G_PLAYERFOV){
-			// ä¸”åŒæ—¶è¿™äº›ç©å®¶åœ¨xè½´çš„å¯è§èŒƒå›´å†…
+			// ÇÒÍ¬Ê±ÕâĞ©Íæ¼ÒÔÚxÖáµÄ¿É¼û·¶Î§ÄÚ
 			if(x_ViewSet.find((*ite_Y)->m_ID) != x_ViewSet.end() && JudgeDistanceInView(player, *ite_Y)){
 				/**
 				auto itor = std::find(player->m_ViewList.begin(), player->m_ViewList.end(), (*ite_Y)->m_ID);
@@ -224,12 +227,13 @@ list<int> Map:: GetViewListByXYList(Player* player){
 		}
 		++ite_Y;
 	}
-	// å½“å‰ç©å®¶å¾€ä¸‹çœ‹
+	// µ±Ç°Íæ¼ÒÍùÏÂ¿´
 	ite_Y = player->y_ListIte;
-	--ite_Y;
+
 	while(ite_Y != y_Players.begin()){
+		--ite_Y;
 		if(player->m_Y - (*ite_Y)->m_Y <= G_PLAYERFOV){
-			// ä¸”åŒæ—¶è¿™äº›ç©å®¶åœ¨xè½´çš„å¯è§èŒƒå›´å†…
+			// ÇÒÍ¬Ê±ÕâĞ©Íæ¼ÒÔÚxÖáµÄ¿É¼û·¶Î§ÄÚ
 			if(x_ViewSet.find((*ite_Y)->m_ID) != x_ViewSet.end() && JudgeDistanceInView(player, *ite_Y)){
 				viewList.push_back((*ite_Y)->m_ID);
 				player->m_ViewSet.insert((*ite_Y)->m_ID);
@@ -237,7 +241,6 @@ list<int> Map:: GetViewListByXYList(Player* player){
 		}else{
 			break;
 		}
-		--ite_Y;
 	}
 	if(ite_Y == y_Players.begin() && 
 		player->m_Y - (*ite_Y)->m_Y <= G_PLAYERFOV && 

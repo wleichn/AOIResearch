@@ -1,0 +1,25 @@
+﻿  AOIResearch.cpp
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Map.cpp
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  MyBeep.cpp
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  MyTime.cpp
+e:\tempcodes\c++\aoiresearch\mytime.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  pch.cpp
+e:\tempcodes\c++\aoiresearch\pch.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Player.cpp
+e:\tempcodes\c++\aoiresearch\player.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\tempcodes\c++\aoiresearch\mymath.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Server.cpp
+e:\tempcodes\c++\aoiresearch\gamedefine.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  正在生成代码...
+e:\tempcodes\c++\aoiresearch\map.cpp(113): warning C4715: “Map::AddToXList”: 不是所有的控件路径都返回值
+e:\tempcodes\c++\aoiresearch\map.cpp(121): warning C4715: “Map::AddToYList”: 不是所有的控件路径都返回值
+e:\tempcodes\c++\aoiresearch\map.cpp(156): warning C4715: “Map::UpdateToXList”: 不是所有的控件路径都返回值
+e:\tempcodes\c++\aoiresearch\map.cpp(165): warning C4715: “Map::UpdateToYList”: 不是所有的控件路径都返回值
+MSVCRTD.lib(exe_winmain.obj) : error LNK2019: 无法解析的外部符号 _WinMain@16，该符号在函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中被引用
+E:\TempCodes\c++\AOIResearch\Debug\AOIResearch.exe : fatal error LNK1120: 1 个无法解析的外部命令

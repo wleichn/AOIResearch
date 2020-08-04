@@ -1,12 +1,12 @@
 #pragma once
 
-// å¾—åˆ°å½“å‰æ—¶é—´
+// µÃµ½µ±Ç°Ê±¼ä
 unsigned int GetCurTime();
 
-// å¾—åˆ°æ—¶é—´å·®
-// å‚æ•°ä¸€ï¼šå¼€å§‹æ—¶é—´
-// å‚æ•°äºŒï¼šç»“æŸæ—¶é—´
+// µÃµ½Ê±¼ä²î
+// ²ÎÊıÒ»£º¿ªÊ¼Ê±¼ä
+// ²ÎÊı¶ş£º½áÊøÊ±¼ä
 int GetTimeDiff(unsigned int start, unsigned end);
 
-// ä¼‘çœ è¿™ä¹ˆé•¿æ—¶é—´
+// ĞİÃßÕâÃ´³¤Ê±¼ä
 void MySleep(unsigned int sleepTime);

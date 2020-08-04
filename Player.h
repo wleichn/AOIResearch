@@ -5,7 +5,7 @@ using std::list;
 using std::set;
 
 class Map;
-// ç©å®¶ç±»
+// Íæ¼ÒÀà
 class Player
 {
 	friend class Map;
@@ -15,31 +15,31 @@ public:
 	~Player();
 	// 
 	void Init();
-	// éšæœºç§»åŠ¨
-	// å‚æ•°ä¸€ï¼šç§»åŠ¨æ­¥é•¿
-	// å‚æ•°äºŒã€å‚æ•°ä¸‰ï¼šxæ–¹å‘æœ€å°å’Œæœ€å¤§ç§»åŠ¨èŒƒå›´
-	// å‚æ•°å››ã€å‚æ•°äº”ï¼šyæ–¹å‘æœ€å°å’Œæœ€å¤§ç§»åŠ¨èŒƒå›´
-	// ä¸å¯ä¿®æ”¹
+	// Ëæ»úÒÆ¶¯
+	// ²ÎÊıÒ»£ºÒÆ¶¯²½³¤
+	// ²ÎÊı¶ş¡¢²ÎÊıÈı£ºx·½Ïò×îĞ¡ºÍ×î´óÒÆ¶¯·¶Î§
+	// ²ÎÊıËÄ¡¢²ÎÊıÎå£ºy·½Ïò×îĞ¡ºÍ×î´óÒÆ¶¯·¶Î§
+	// ²»¿ÉĞŞ¸Ä
 	void RandMove(float fMoveStep, float xMin, float xMax, float yMin, float yMax);
-	// å¾—åˆ°è§†é‡å†…ç©å®¶ID
+	// µÃµ½ÊÓÒ°ÄÚÍæ¼ÒID
 	list<int>& GetViewPlayers();
-	// å¾—åˆ°è§†é‡å†…æ–°å‡ºç°çš„ç©å®¶ID	
+	// µÃµ½ÊÓÒ°ÄÚĞÂ³öÏÖµÄÍæ¼ÒID	
 	list<int>& GetNewViewPlayers();
-	// å¾—åˆ°è§†é‡å†…æ¶ˆå¤±çš„ç©å®¶ID
+	// µÃµ½ÊÓÒ°ÄÚÏûÊ§µÄÍæ¼ÒID
 	list<int>& GetLostViewPlayers();
-	// æŸä¸ªç©å®¶æ˜¯å¦åœ¨è‡ªå·±è§†é‡å†…
+	// Ä³¸öÍæ¼ÒÊÇ·ñÔÚ×Ô¼ºÊÓÒ°ÄÚ
 	bool IsInView(int otherPlayerID);
-	// å¾—åˆ°è‡ªå·±çš„ID
+	// µÃµ½×Ô¼ºµÄID
 	int GetID()
 	{
 		return m_ID;
 	}
-	// è®¾ç½®æ‰€åœ¨åœ°å›¾ID
+	// ÉèÖÃËùÔÚµØÍ¼ID
 	void SetMapID(int mapid)
 	{
 		m_MapID = mapid;
 	}
-	// å¾—åˆ°æ‰€åœ¨åœ°å›¾ID
+	// µÃµ½ËùÔÚµØÍ¼ID
 	int GetMapID()
 	{
 		return m_MapID;
@@ -55,16 +55,16 @@ public:
 		return m_Y;
 	}
 private:
-	float m_X = 0, m_Y = 0;			// å½“å‰åæ ‡x, y
-	int   m_ID = 0;					// ç©å®¶ID
-	float m_LastX = 0, m_LastY = 0; // æœ¬æ¬¡ç§»åŠ¨å‰çš„åæ ‡
-	float m_lastRadian = 0;			// ä¸Šæ¬¡ç§»åŠ¨çš„å¼§åº¦
-	list<int> m_ViewList;			// è§†é‡åˆ—è¡¨
-	list<int> m_NewViewList;		// æœ¬å¸§è§†é‡ä¸­æ–°å¢å¯¹è±¡çš„åˆ—è¡¨
-	list<int> m_LostViewList;		// æœ¬å¸§è§†é‡ä¸­æ¶ˆå¤±å¯¹è±¡çš„åˆ—è¡¨
-	int	  m_MapID = 0;				// ç©å®¶æ‰€åœ¨åœ°å›¾ID
-	list<Player* >::iterator x_ListIte;		// ç©å®¶æŒ‰ç…§Xè½´æ’åˆ—æ—¶çš„ä½ç½®
-	list<Player* >::iterator y_ListIte;		// ç©å®¶æŒ‰ç…§Yè½´æ’åˆ—æ—¶çš„ä½ç½®
-	set<int> m_ViewSet;				// è§†é‡é›†åˆï¼ˆä¸m_ViewListä¸€åŒç»´æŠ¤ï¼Œç”¨äºæå‡åˆ¤æ–­å¯¹è±¡æ˜¯å¦åœ¨å½“å‰ç©å®¶è§†é‡å†…çš„æ•ˆç‡ï¼‰
+	float m_X = 0, m_Y = 0;			// µ±Ç°×ø±êx, y
+	int   m_ID = 0;					// Íæ¼ÒID
+	float m_LastX = 0, m_LastY = 0; // ±¾´ÎÒÆ¶¯Ç°µÄ×ø±ê
+	float m_lastRadian = 0;			// ÉÏ´ÎÒÆ¶¯µÄ»¡¶È
+	list<int> m_ViewList;			// ÊÓÒ°ÁĞ±í
+	list<int> m_NewViewList;		// ±¾Ö¡ÊÓÒ°ÖĞĞÂÔö¶ÔÏóµÄÁĞ±í
+	list<int> m_LostViewList;		// ±¾Ö¡ÊÓÒ°ÖĞÏûÊ§¶ÔÏóµÄÁĞ±í
+	int	  m_MapID = 0;				// Íæ¼ÒËùÔÚµØÍ¼ID
+	list<Player* >::iterator x_ListIte;		// Íæ¼Ò°´ÕÕXÖáÅÅÁĞÊ±µÄÎ»ÖÃ
+	list<Player* >::iterator y_ListIte;		// Íæ¼Ò°´ÕÕYÖáÅÅÁĞÊ±µÄÎ»ÖÃ
+	set<int> m_ViewSet;				// ÊÓÒ°¼¯ºÏ£¨Óëm_ViewListÒ»Í¬Î¬»¤£¬ÓÃÓÚÌáÉıÅĞ¶Ï¶ÔÏóÊÇ·ñÔÚµ±Ç°Íæ¼ÒÊÓÒ°ÄÚµÄĞ§ÂÊ£©
 };
 

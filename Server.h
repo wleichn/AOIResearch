@@ -4,15 +4,15 @@
 #include <list>
 using std::list;
 
-//å¯¼å‡ºæ£€æµ‹å·¥å…·éœ€è¦çš„éªŒè¯æ•°æ®
-//ä¸å¯ä¿®æ”¹å†…éƒ¨ç»“æ„é¡ºåº
+//µ¼³ö¼ì²â¹¤¾ßĞèÒªµÄÑéÖ¤Êı¾İ
+//²»¿ÉĞŞ¸ÄÄÚ²¿½á¹¹Ë³Ğò
 struct ViewListReport
 {
-	double viewFindTime = 0;//æŸ¥æ‰¾å‡½æ•°çš„æ€»è€—æ—¶
+	double viewFindTime = 0;//²éÕÒº¯ÊıµÄ×ÜºÄÊ±
 	list<int> viewList;
 };
 
-// æœåŠ¡å™¨æ€»æ§ç±»
+// ·şÎñÆ÷×Ü¿ØÀà
 class Server
 {
 public:
@@ -21,26 +21,26 @@ public:
 	int Init(int iPlayerNum = 100);
 	void Release();
 	int Logic();
-	// è®¾ç½®è¦ç›‘è§†çš„ç©å®¶
-	// ä¸å¯ä¿®æ”¹
+	// ÉèÖÃÒª¼àÊÓµÄÍæ¼Ò
+	// ²»¿ÉĞŞ¸Ä
 	void SetPlayerBeMonitored(int iID);	
-	//è·å¾—è¢«ç›‘è§†ç©å®¶çš„è§†é‡åˆ—è¡¨
-	//ä¸å¯è¿›è¡Œå‡½æ•°æœ¬æ„çš„ä¿®æ”¹
+	//»ñµÃ±»¼àÊÓÍæ¼ÒµÄÊÓÒ°ÁĞ±í
+	//²»¿É½øĞĞº¯Êı±¾ÒâµÄĞŞ¸Ä
 	void ConfirmPlayerViewList(ViewListReport& report);
 private:
-	// åˆ›å»ºç©å®¶å¯¹è±¡
+	// ´´½¨Íæ¼Ò¶ÔÏó
 	Player* CreatePlayer(int iID);
-	// ç”Ÿæˆç©å®¶ID
+	// Éú³ÉÍæ¼ÒID
 	int GenPlayerID();
-	// æ‰“å°è¢«ç›‘æ§çš„ç©å®¶è§†é‡ä¿¡æ¯
-	// ä¸å¯ä¿®æ”¹
+	// ´òÓ¡±»¼à¿ØµÄÍæ¼ÒÊÓÒ°ĞÅÏ¢
+	// ²»¿ÉĞŞ¸Ä
 	void OutPutPlayerBeMonitored();
-	// è·å¾—ç©å®¶æŒ‡é’ˆ
+	// »ñµÃÍæ¼ÒÖ¸Õë
 	Player* GetPlayer(int iID);
 private:
-	Map* m_Map = NULL;				// åªæœ‰ä¸€å¼ åœ°å›¾
-	int m_PlayerNum = 0;			// ç©å®¶æ€»æ•°
-	list<Player* > m_Players;		// ç©å®¶é“¾è¡¨
-	Player* m_BeMonitored = NULL;	// è¢«ç›‘è§†çš„ç©å®¶ï¼Œä¸å¯ä¿®æ”¹
+	Map* m_Map = NULL;				// Ö»ÓĞÒ»ÕÅµØÍ¼
+	int m_PlayerNum = 0;			// Íæ¼Ò×ÜÊı
+	list<Player* > m_Players;		// Íæ¼ÒÁ´±í
+	Player* m_BeMonitored = NULL;	// ±»¼àÊÓµÄÍæ¼Ò£¬²»¿ÉĞŞ¸Ä
 };
 

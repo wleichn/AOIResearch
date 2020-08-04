@@ -1,4 +1,4 @@
-// AOIResearch.cpp : æ­¤æ–‡ä»¶åŒ…å« "main" å‡½æ•°ã€‚ç¨‹åºæ‰§è¡Œå°†åœ¨æ­¤å¤„å¼€å§‹å¹¶ç»“æŸã€‚
+// AOIResearch.cpp : ´ËÎÄ¼ş°üº¬ "main" º¯Êı¡£³ÌĞòÖ´ĞĞ½«ÔÚ´Ë´¦¿ªÊ¼²¢½áÊø¡£
 //
 #include "pch.h"
 #include <iostream>
@@ -19,8 +19,8 @@ void InitGlobal()
 	return;
 }
 
-//ä¸»é€»è¾‘
-//ä¸å¯ä¿®æ”¹
+//Ö÷Âß¼­
+//²»¿ÉĞŞ¸Ä
 void GameMainLogic(int nPlayerNum,int playerID,int endFrameID)
 {
 	if (playerID > nPlayerNum + 1) {
@@ -34,8 +34,8 @@ void GameMainLogic(int nPlayerNum,int playerID,int endFrameID)
 		return;	
 	myServer->Init(nPlayerNum);
 	myServer->SetPlayerBeMonitored(playerID);
-	std::cout << "ç©å®¶æ€»æ•°ä¸ºï¼š" << nPlayerNum << "ï¼Œè¦æ˜¾ç¤ºçš„ç©å®¶IDæ˜¯ï¼š" << playerID << std::endl;
-	std::cout << "å¼€å§‹æ‰§è¡Œæµ‹è¯•ç”¨ä¾‹" << std::endl;
+	std::cout << "Íæ¼Ò×ÜÊıÎª£º" << nPlayerNum << "£¬ÒªÏÔÊ¾µÄÍæ¼ÒIDÊÇ£º" << playerID << std::endl;
+	std::cout << "¿ªÊ¼Ö´ĞĞ²âÊÔÓÃÀı" << std::endl;
 	srand(randomSeed1);	
 	unsigned int startTime = GetCurTime();
 	unsigned int testTime = startTime;
@@ -48,7 +48,7 @@ void GameMainLogic(int nPlayerNum,int playerID,int endFrameID)
 		int timeInterval = GetTimeDiff(startTime, nowTime);
 		if (timeInterval / G_LOGICINTERVAL > 1)
 		{
-			std::cout << "Big Tickï¼š" << timeInterval / G_LOGICINTERVAL << std::endl;	
+			std::cout << "Big Tick£º" << timeInterval / G_LOGICINTERVAL << std::endl;	
 			nBigTickCount++;
 		}
 		while (timeInterval >= G_LOGICINTERVAL)
@@ -57,6 +57,7 @@ void GameMainLogic(int nPlayerNum,int playerID,int endFrameID)
 			timeInterval -= G_LOGICINTERVAL;
 			startTime += G_LOGICINTERVAL;
 			nFrameCount++;
+			std::cout << "µÚ" << nFrameCount << "Ö¡£¬×Ü"<< endFrameID << "Ö¡£¬´ËÊ±" << (nFrameCount >= endFrameID) << std::endl;
 			if (nFrameCount >= endFrameID) {
 				bRun = false;
 				unsigned int lastTime = GetCurTime();
@@ -71,14 +72,14 @@ void GameMainLogic(int nPlayerNum,int playerID,int endFrameID)
 		}
 	}
 
-	//å¼€å§‹è¿›è¡Œæ­£ç¡®æ€§åˆ¤æ–­
+	//¿ªÊ¼½øĞĞÕıÈ·ĞÔÅĞ¶Ï
 	ViewListReport report;
 	myServer->ConfirmPlayerViewList(report);
 
-	std::cout << "æ€»å…±è·‘çš„æ—¶é—´ä¸ºï¼š" << testTime << "ms" << std::endl;
-	std::cout << "BIGTICKï¼š" << nBigTickCount << std::endl;
-	std::cout << "æŸ¥æ‰¾è§†é‡å†…ç©å®¶è€—æ—¶" << report.viewFindTime << "ms" << std::endl;
-	//å°†ç»“æœå†™åˆ°æ–‡ä»¶ä¸­	
+	std::cout << "×Ü¹²ÅÜµÄÊ±¼äÎª£º" << testTime << "ms" << std::endl;
+	std::cout << "BIGTICK£º" << nBigTickCount << std::endl;
+	std::cout << "²éÕÒÊÓÒ°ÄÚÍæ¼ÒºÄÊ±" << report.viewFindTime << "ms" << std::endl;
+	//½«½á¹ûĞ´µ½ÎÄ¼şÖĞ	
 	FILE* fpRpt = NULL;
 	fopen_s(&fpRpt,"./AOIResearch.report", "wb");
 	if (fpRpt != NULL) {
@@ -99,18 +100,18 @@ void GameMainLogic(int nPlayerNum,int playerID,int endFrameID)
 	return;
 }
 
-//å‚æ•°1ç©å®¶æ€»äººæ•°
-//å‚æ•°2è§†é‡æ£€æŸ¥ç©å®¶ID
-//å‚æ•°3è§†é‡æ£€æŸ¥å¸§æ•°
+//²ÎÊı1Íæ¼Ò×ÜÈËÊı
+//²ÎÊı2ÊÓÒ°¼ì²éÍæ¼ÒID
+//²ÎÊı3ÊÓÒ°¼ì²éÖ¡Êı
 int main(int argc,char** argv)
 {
-	if (argc < 4)
-		return -1;
+	int args[4];
+	std::cin >> args[1] >> args[2] >> args[3];
 	InitGlobal();
 	std::cout << "<==========cyou.com===========>" << std::endl;
-	std::cout << "è§†é‡åŒæ­¥ç®—æ³•ç”¨ä¾‹æ‰§è¡Œå¼€å§‹" << std::endl;
-	GameMainLogic(atoi(argv[1]), atoi(argv[2]),atoi(argv[3]));
-    std::cout << "è§†é‡åŒæ­¥ç®—æ³•ç”¨ä¾‹æ‰§è¡Œå®Œæ¯•..." << std::endl; 
+	std::cout << "ÊÓÒ°Í¬²½Ëã·¨ÓÃÀıÖ´ĞĞ¿ªÊ¼" << std::endl;
+	GameMainLogic((args[1]), (args[2]), (args[3]));
+    std::cout << "ÊÓÒ°Í¬²½Ëã·¨ÓÃÀıÖ´ĞĞÍê±Ï..." << std::endl; 
 	std::cout << "<==========cyou.com===========>" << std::endl;
 	return 0;
 }

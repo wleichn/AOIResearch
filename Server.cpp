@@ -42,7 +42,7 @@ int Server::Init(int iPlayerNum)
 		}
 		m_Players.push_back(tPlayer);
 		++m_PlayerNum;
-		// ÊääÁé©ÂÆ∂Ê∑ªÂä†ËøõÂú∞Âõæ
+		// ∞—ÕÊº“ÃÌº”Ω¯µÿÕº
 		m_Map->AddPlayer(newID, tPlayer);
 	}
 	return 0;
@@ -96,19 +96,19 @@ void Server::ConfirmPlayerViewList(ViewListReport& report)
 		std::chrono::high_resolution_clock::time_point endViewFindTime = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<double, std::ratio<1, 1000>> viewFindTime = std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1, 1000>>>(endViewFindTime - startViewFindTime);
 		report.viewFindTime = viewFindTime.count();
-		//È™åËØÅÂØπÁ≠âÊÄß
+		//—È÷§∂‘µ»–‘
 		for (int playerID : viewPlayers)
 		{
 			Player* player = GetPlayer(playerID);
 			if (!player) {
-				//Êï∞ÊçÆÈùûÊ≥ï
+				// ˝æ›∑«∑®
 				return;
 			}
 			if (player->IsInView(m_BeMonitored->GetID())) {
 				report.viewList.push_back(playerID);
 			}
 			else {
-				//ÈùûÂØπÁ≠âÊÄß
+				//∑«∂‘µ»–‘
 				return;
 			}
 		}
@@ -130,12 +130,12 @@ void Server::OutPutPlayerBeMonitored()
 	if (m_BeMonitored == NULL)
 		return;
 	cout << "<=============================>" << endl;
-	cout << "Áé©ÂÆ∂" << m_BeMonitored->GetID() << "ÂùêÊ†á‰∏∫Ôºö(" << m_BeMonitored->GetX() << "," <<
-		m_BeMonitored->GetY() << ")ÔºåÊâìÂç∞Áé©ÂÆ∂" << m_BeMonitored->GetID() << "ÁöÑËßÜÈáé‰ø°ÊÅØÔºö" << endl;
+	cout << "ÕÊº“" << m_BeMonitored->GetID() << "◊¯±ÍŒ™£∫(" << m_BeMonitored->GetX() << "," <<
+		m_BeMonitored->GetY() << ")£¨¥Ú”°ÕÊº“" << m_BeMonitored->GetID() << "µƒ ”“∞–≈œ¢£∫" << endl;
 	auto viewList = m_BeMonitored->GetViewPlayers();
 	if (!viewList.empty())
 	{
-		cout << "Áé©ÂÆ∂ËßÜÈáéÂÜÖÂÖ±" << viewList.size() << "‰∫∫Ôºö";
+		cout << "ÕÊº“ ”“∞ƒ⁄π≤" << viewList.size() << "»À£∫";
 		for (auto playerID : viewList)
 		{
 			cout << playerID << " ";
@@ -144,12 +144,12 @@ void Server::OutPutPlayerBeMonitored()
 	}
 	else
 	{
-		cout << "ËßÜÈáéÂÜÖÂÖ±0‰∫∫" << endl;
+		cout << " ”“∞ƒ⁄π≤0»À" << endl;
 	}
 	auto newViewList = m_BeMonitored->GetNewViewPlayers();
 	if (!newViewList.empty())
 	{
-		cout << "Áé©ÂÆ∂ËßÜÈáéÂÜÖÊñ∞Âá∫Áé∞" << newViewList.size() << "‰∫∫Ôºö";
+		cout << "ÕÊº“ ”“∞ƒ⁄–¬≥ˆœ÷" << newViewList.size() << "»À£∫";
 		for (auto playerID : newViewList)
 		{
 			cout << playerID << " ";
@@ -158,12 +158,12 @@ void Server::OutPutPlayerBeMonitored()
 	}
 	else
 	{
-		cout << "ËßÜÈáéÂÜÖÊñ∞Âá∫Áé∞0‰∫∫" << endl;
+		cout << " ”“∞ƒ⁄–¬≥ˆœ÷0»À" << endl;
 	}
 	auto lostViewList = m_BeMonitored->GetLostViewPlayers();
 	if (!lostViewList.empty())
 	{
-		cout << "Áé©ÂÆ∂ËßÜÈáéÂÜÖÊ∂àÂ§±" << lostViewList.size() << "‰∫∫Ôºö";
+		cout << "ÕÊº“ ”“∞ƒ⁄œ˚ ß" << lostViewList.size() << "»À£∫";
 		for (auto playerID : lostViewList)
 		{
 			cout << playerID << " ";
@@ -172,7 +172,7 @@ void Server::OutPutPlayerBeMonitored()
 	}
 	else
 	{
-		cout << "ËßÜÈáéÂÜÖÊ∂àÂ§±0‰∫∫" << endl;
+		cout << " ”“∞ƒ⁄œ˚ ß0»À" << endl;
 	}
 	return;
 }
